@@ -1,0 +1,4 @@
+Pendientes
+- Crear algoritmo, que trae las calles, en el sentido con que marca OSM.**** Get Segmentos en caja----
+- Revisar el sentido del aforo de acuerdo con el sentido de la calle(oneway,both,reverse)
+- Dibujar el aforo.

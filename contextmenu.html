@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>SCPV</title>
+  <meta charset="utf-8">
+  <META http-equiv="Content-Script-Type" content="type">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/openlayers/dist/ol.css">
+  <link rel="stylesheet" href="dist/ol-contextmenu.min.css">
+  <link rel="stylesheet" href="contextmenu.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="map" tabindex="0"></div>
+
+  <div class="divform" id="divform">
+
+    <form action="insert.php" method="POST" class="form-group" id="formulario" name="formulario">
+      <!--   <label for="estatico">Añada elemento</label>
+      <select name="estatico" id="estatico" required />
+      <option value="">Seleccione opcíon</option>
+      <option value="pasoPeatonal">Paso peatonal</option>
+      <option value="alto">Alto</option>
+      <option value="tope">Tope</option>
+      <option value="otro">Otro señalamiento</option>
+      <option value="reductor">Reductor de velocidad</option>
+      <option value="semaforo">Semaforo</option>
+      <option value="aforos">Aforos</option>
+      </select>-->
+      <input type="hidden" name="tipo" id="tipo">
+      <input type="hidden" name="lat" id="lat">
+      <input type="hidden" name="lon" id="lon">
+      <div class="semaforo"> </div>
+      <label for="">Descripcion</label>
+      <input type="text" name="descripcion" id="descripcion" required />
+
+
+      <div id="error"></div>
+      <input type="submit" value="Enviar" name="submit">
+    </form>
+
+  </div>
+  <script src="https://unpkg.com/openlayers"></script>
+  <script src="dist/ol-contextmenu.js"></script>
+  <script src="contextmenu.js"></script>
+  <script src="enviarJson.js"></script>
+</body>
+
+</html>

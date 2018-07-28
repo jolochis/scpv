@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="lib/Login.js"></script>
+		<style type="text/css">
+			.errorred { border: 1px solid red; }
+		</style>
+		
+	</head>
+	<body>
+		<center>
+		<div style="width:50%">
+		
+		<fieldset >
+			<legend><h1>Indentificate!:</h1></legend>
+			<!-- <form id="login" name="login" method="post"> -->
+				<table width=100%>
+					<tr><div style="color:red" id="loginerror"></div></tr>
+					<tr>
+						<td><input style="width:100%" type="text" pattern="[a-zA-Z]*" placeholder="Nombre Usuario" id="uname" name="uname" maxlength=30 required="required"/></td>
+					</tr>
+					<tr>
+						<td><input type="password" style="width:50%" maxlength=10 id="pass" name="pass" placeholder="Password" required="required"/></td>
+					</tr>
+				</table>
+			<!--</form>-->
+		</fieldset>
+		
+		<fieldset >
+			<legend><h1>Registrate: </h1></legend>	
+			<!-- <form id="nuevo" name="nuevo" method="POST">-->
+				<table width=100%>
+					<tr>
+						<div style="color:red" id="nuevoerror"></div>
+						<div style="color:green" id="nuevobien"></div>
+					</tr>
+					<tr>
+						<td><input type="text" style="width:100%" pattern="[a-zA-Z]*" placeholder="Nombre Usuario" id="nuname" name="nuname" maxlength=30 required="required"/></td>
+					</tr>
+					<tr>
+						<td><input type="text" style="width:100%" placeholder="Email" id="nemail" name="nemail" required="required"/></td>
+					</tr>
+					<tr>
+						<td><input type="password" style="width:50%" maxlength=10 placeholder="Password"  id="npass" name="npass" required="required"/></td>
+					</tr>
+					<tr>
+						<td colspan=2><input align="center" type="image" src="images/add_user2.png" width="50" value="Enviar" onClick="registrar()"/>
+						<input align="center" type="image" src="images/no2_button.png"  width="50" onClick="cancel()"/>
+						</td>
+					</tr>
+				</table>
+			<!-- </form>-->
+		</fieldset>
+		</div>
+		</center>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+USUARIOS
+id
+nombre
+apellido paterno
+apellido materno
+ciudad
+municipio
+estado
+sexo
+fecha_nacimiento
+correo
+contraseña
+nivel
+
+MAPAS
+id
+descripcion
+status
+fecha_creacion
+count
+
+
+NIVEL
+Regular 
+administrador
+
+USUARIO ACTIVO
+id
+bandera
+fecha_acceso
+
+STATUS 
+en curso
+enviado
+evaluado
+
+SEGMENTOS
+id
+largo 
+ancho
+estaticos
+dinamicos
+
+ESTATICOS
+1  Paso peatonal
+2  Alto
+3  Tope
+4  Reductor de velocidad
+   coordenadas_estaticos
+
+DINAMICOS
+aforos
+semaforos
+coordenadas       
+coordenadas_dinamicos
+        

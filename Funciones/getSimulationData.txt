@@ -1,0 +1,10 @@
+
+	CREATE OR REPLACE FUNCTION "getSimulationData"(IN propuesta numeric,IN init Integer, IN end Integer)
+	  RETURNS TABLE(_name character varying(10), _lonlat4 text, _lonlat9 text, _length double precision,_segmentType character varying(30), _type character varying(30)) AS
+	$BODY$declare
+		
+	BEGIN
+		
+	$BODY$
+	  LANGUAGE plpgsql VOLATILE;
+	

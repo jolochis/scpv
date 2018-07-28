@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="class.TrafficObject.js"></script>
+		<script type="text/javascript" src="class.Semaphore.js"></script>
+		<script type="text/javascript" src="class.Configuracion.js"></script>
+		<script type="text/javascript" src="class.TrafficLayer.js"></script>
+		<script type="text/javascript" src="OpenLayers.js"></script>
+		<script type="text/javascript">
+			function ff(){
+				var o = new Semaphore(1,1);
+				o.setName("Semafprp");
+				o.setAttr();
+			}
+		</script>
+	</head>
+	<body onLoad="ff()">
+		<input type="button" id="ejemplo" name="ejemplo" value="Ejemplo"/>
+		<p>
+			gff
+		</p>
+	</body>
+</html>

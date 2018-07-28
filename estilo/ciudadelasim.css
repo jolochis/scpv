@@ -1,0 +1,243 @@
+@CHARSET "UTF-8";
+
+.errorred { border: 1px solid red; }
+
+#symbolleiste{
+	width:100%;
+}
+		
+
+
+.benutzer,.simulacion{
+	display:none
+}
+
+#mbox{
+	width: 40%;
+	font-size: 15px;
+	display:inline-block;
+	padding-left:2px;
+	color:red;
+}
+
+#identificado{
+	width: 30%;
+	font-size: 15px;
+	display:inline-block;
+	color:cyan;
+}
+
+#benutzer {
+	width: 28%;
+	display:inline-block;
+	
+}
+
+#all{
+	display: inline-block;
+}
+
+#traffic{
+	display: inline-block;
+}
+
+#cuerpo{
+	position: absolute;
+	width: 100%;
+	height: 85%;
+	display: inline-block;
+}
+
+label, input[type="radio"]{
+font-size: 13px !important; 
+}
+
+#simformulario{
+	font-size: 15px;
+}
+
+.ui-button,  .ui-button-text .ui-button .ui-label .ui-radio{
+font-size: 13px !important; 
+}
+
+#lpropuestas{
+	width: 100% !important;
+}
+
+input[type="button"].ui-button{
+	width: 100%;
+}
+
+
+input[type="text"]{
+	width: 100%;
+}
+
+#mapa{
+	position: absolute;
+	left: 2px;
+	width: 68%;
+	height: 100%;
+	border: 1px solid #000;
+}
+
+#userprop{
+	position: absolute;
+	right:15px;
+	width: 30%;
+	border: 1px solid #000000;
+}
+/*
+ul.carril{
+	list-style-type: none;
+	display:block;
+	font-family:arial,sans-serif;
+	font-size:14px;
+    /*padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em;
+
+}*/
+/*ul.ocarril{
+	list-style-type: none;
+	display:block;
+	font-family:arial,sans-serif;
+	font-size:14px;
+}
+ul.carrila{
+	list-style-type: none;
+	display:block;
+	font-family:arial,sans-serif;
+	font-size:14px;
+}
+ul.carrilt{
+	list-style-type: none;
+	display:block;
+	font-family:arial,sans-serif;
+	font-size:14px;
+}
+ul.carrilpa{
+	list-style-type: none;
+	display:block;
+	font-family:arial,sans-serif;
+	font-size:14px;
+}*/
+
+/*#registrousuario {
+background:transparent url(../images/bgfieldset.jpg) no-repeat scroll left bottom;
+border:medium none;
+color:#333333;
+height:665px;
+padding:0 0 0 50px;
+width:515px;*/
+}
+
+/*#registrousuario legend {
+color:#333333;
+font-family:arial;
+font-size:21px;
+text-transform:capitalize;
+}
+
+#registrousuario input.texto {
+background:#FFFFFF url(../images/bginputtexto.gif) no-repeat scroll left top;
+border:medium none !important;
+color:#666666;
+font-size:12px;
+height:24px;
+padding-bottom:0;
+padding-left:5px;
+padding-top:5px;
+width:100%;
+font-family:arial,sans-serif;
+}
+
+#registrousuario input.texto1 {
+background:#FFFFFF url(../images/bginputtexto.gif) no-repeat scroll left top;
+border:medium none !important;
+color:#000;
+font-size:12px;
+height:16px;
+padding-bottom:0;
+padding-left:5px;
+padding-top:5px;
+width:100%;
+font-family:arial,sans-serif;
+}
+#registrousuario select.cmb1 {
+/*background:#FFFFFF url(../images/bginputtexto.gif) no-repeat scroll left top;
+border:medium none !important;
+color:#000;
+font-size:12px;
+/*height:26px;
+padding-bottom:0;
+padding-left:5px;
+padding-top:2px;
+width:200px;
+font-family:arial,sans-serif;
+}
+
+#registrousuario input#lrd {
+background-color: #fd0404;
+}
+#registrousuario input#lad {
+background-color: #f3da08;
+}
+#registrousuario input#lvd {
+background-color: #ffffff;
+}
+
+/*#registrousuario textarea.areadetexto {
+background: #ffffff url(../images/bgtextarea.gif) no-repeat scroll top left;
+width: 454px;
+height: 212px;
+border:none !important;
+padding-bottom:0;
+padding-left:5px;
+padding-top:5px;
+color:#666666;
+font-size:12px;
+font-family:arial,sans-serif;
+}
+
+#registrousuario label {
+display:block;
+font-family:arial,sans-serif;
+font-size:14px;
+}
+
+/*#registrousuario input.cbx {
+display:block;
+font-family:arial,sans-serif;
+font-size:14px;
+padding:10px 0 3px;
+}
+
+#registrousuario p {
+align:left;
+display:block;
+font-family:arial,sans-serif;
+font-size:14px;
+
+
+
+/*padding:5px 0 3px;
+
+#registrousuario input.botonenviar {
+background:transparent url(../images/bgbotonenviar.gif) no-repeat scroll left top;
+border:medium none !important;
+color:#FFFFFF;
+display:block;
+float:left;
+font-family:arial,sans-serif;
+height:30px;
+margin-left:360px;
+margin-top:20px;
+text-align:center;
+width:99px;
+}*/
+
+

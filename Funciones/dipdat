@@ -1,0 +1,11 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="0">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1" startPos="0" endPos="0" selMode="0" lang="Normal Text" encoding="-1" filename="D:\Xplane\X-Plane 10 Demo\Resources\plugins\Commands.txt" backupFilePath="" originalFileLastModifTimestamp="1412007968" />
+            <File firstVisibleLine="1715" xOffset="120" scrollWidth="4060" startPos="156603" endPos="156603" selMode="0" lang="Normal Text" encoding="-1" filename="D:\Xplane\X-Plane 10 Demo\Resources\plugins\DataRefs.txt" backupFilePath="C:\Users\Augusto\AppData\Roaming\Notepad++\backup\DataRefs.txt@2014-10-07_154201" originalFileLastModifTimestamp="1412007969" />
+            <File firstVisibleLine="592" xOffset="0" scrollWidth="235350" startPos="5067" endPos="5213" selMode="0" lang="XML" encoding="-1" filename="C:\xampp\htdocs\ciudadelasim\Simulaciones\utyil559-1104.xml" backupFilePath="C:\Users\Augusto\AppData\Roaming\Notepad++\backup\utyil559-1104.xml@2014-10-07_164932" originalFileLastModifTimestamp="1412697420" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1710" startPos="0" endPos="0" selMode="0" lang="SQL" encoding="-1" filename="C:\xampp\htdocs\ciudadelasim\Funciones\generateUtyilData1.2ok.sql" backupFilePath="" originalFileLastModifTimestamp="1412696928" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

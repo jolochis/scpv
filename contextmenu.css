@@ -1,0 +1,100 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 1em/1.5 BlinkMacSystemFont,-apple-system,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue","Helvetica","Arial",sans-serif;
+  color: #222;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+#map {
+/**  position: absolute;
+  z-index: 1;**/
+  top: 0; bottom: 0;
+  height: 55vh;
+}
+
+.ol-control button {
+  background-color: rgba(40, 40, 40, 0.8) !important;
+}
+.ol-control button:hover {
+  background-color: rgba(40, 40, 40, 1) !important;
+}
+
+.marker {
+  text-indent: 20px;
+  background-size: 20px auto;
+  background-image: url("img/pin_drop.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+li.bold {
+  font-weight: 700;
+}
+.formulario{
+  width: 400px;
+  display: inline-block;
+  padding: 20px;
+  
+}
+textarea{
+  height: 86px;
+}
+
+.semaforo{
+  background-color: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  align-content: space-around;
+}
+ #rojo, .rojo{
+  background-color: red;
+  width:60px;
+  height: 60px;
+  border-radius: 50px;
+  margin: 10px;
+  
+}
+#amarillo{
+  background-color: yellow;
+  width:60px;
+  height: 60px;
+  border-radius: 50px;
+  margin: 10px;
+}
+#verde{
+  background-color: green;
+  width:60px;
+  height: 60px;
+  border-radius: 50px;
+  margin: 10px;
+}
+.inp{
+  width: 60px;
+}
+#descripcion{
+  height: 3rem;
+}
+.divform{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Empieza diseño */
+.contenedor{
+  width: 1200px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 480px){
+  .contenedor{
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.img-logo img{
+  height: 27vh;
+}

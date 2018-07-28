@@ -1,0 +1,209 @@
+<UTYiL>
+	<segment id='I1' length='0' type='intersection' points='12 12'>
+		<connection>
+			<c type='NS' to='S4'/>
+			<c type='NC' to='I2'/>
+			<c type='NS' to='S12'/>
+		</connection>
+	</segment>
+	
+	<segment id='I2' length='0' type='intersection' points='12 12'>
+		<connection>
+			<c type='NS' to='S3'/>
+			<c type='NC' to='I1'/>
+			<c type='NS' to='S11'/>
+		</connection>
+	</segment>
+	
+	<segment id='S1' length='30' type='segment' points='1 2, 12 12'>
+		<object id='dS1' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS1" init='0' end='$' attr1='I2'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I2'/>
+			<c type='NS' to='null'>
+		</connection>
+	</segment>
+	
+	<segment id='S2' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS3' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS3" init='0' end='$' attr1='null'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I2'/>
+			<c type='NS' to='null'/>
+		</connection>
+	</segment>
+	
+	<segment id='S3' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS3' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS3" init='0' end='$' attr1='I2'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I2'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S4'/>
+		</connection>
+	</segment>
+	
+	<segment id='S4' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS4' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS4" init='0' end='$' attr1='null'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I1'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S3'/>
+		</connection>
+	</segment>
+	
+	<segment id='S11' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS11' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS11" init='0' end='$' attr1='I3'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I2'/>
+			<c type='NS' to='I3'/>
+			<c type='NC' to='S12'/>
+		</connection>
+	</segment>
+	
+	<segment id='S12' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS12' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS12" init='0' end='$' attr1='I4'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I1'/>
+			<c type='NS' to='I4'/>
+			<c type='NC' to='S11'/>
+		</connection>
+	</segment>
+	
+	<segment id='I3' length='0' type='intersection' points='12 12'>
+		<connection>
+			<c type='NS' to='S5'/>
+			<c type='NC' to='I5'/>
+			<c type='NC' to='I4'/>
+			<c type='NS' to='S11'/>
+		</connection>
+	</segment>
+	
+	<segment id='I4' length='0' type='intersection' points='12 12'>
+		<connection>
+			<c type='NS' to='S6'/>
+			<c type='NC' to='I3'/>
+			<c type='NC' to='I6'/>
+			<c type='NS' to='S12'/>
+		</connection>
+	</segment>
+	
+	<segment id='I5' length='0' type='intersection' points='12 12'>
+		<connection>
+			<c type='NS' to='S9'/>
+			<c type='NC' to='I3'/>
+			<c type='NC' to='I6'/>
+			<c type='NS' to='S7'/>
+		</connection>
+	</segment>
+	
+	<segment id='I6' length='0' type='intersection' points='12 12'>
+		<connection>
+			<c type='NS' to='S10'/>
+			<c type='NC' to='I5'/>
+			<c type='NC' to='I4'/>
+			<c type='NS' to='S8'/>
+		</connection>
+	</segment>
+	
+	<segment id='S5' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS5' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS5" init='0' end='$' attr1='I3'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I3'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S7'/>
+		</connection>
+	</segment>
+	
+	<segment id='S7' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS7' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS7" init='0' end='$' attr1='null'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I5'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S5'/>
+		</connection>
+	</segment>
+	
+	<segment id='S6' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS6' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS6" init='0' end='$' attr1='null'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I4'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S8'/>
+		</connection>
+	</segment>
+	
+	<segment id='S8' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS8' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS8" init='0' end='$' attr1='I6'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I6'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S6'/>
+		</connection>
+	</segment>
+	
+	<segment id='S10' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS10' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS10" init='0' end='$' attr1='I6'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I6'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S9'/>
+		</connection>
+	</segment>
+	
+	<segment id='S9' length='35' type='segment' points='12 12, 20 56'>
+		<object id='dS9' position="#" type="direction">
+			<configurations>
+				<configuration id="cfgS9" init='0' end='$' attr1='null'/>
+			</configurations>
+		</object>
+		<connection>
+			<c type='NS' to='I5'/>
+			<c type='NS' to='null'/>
+			<c type='NC' to='S10'/>
+		</connection>
+	</segment>
+	
+</UTYiL>
+	

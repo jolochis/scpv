@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTYil>
+  <Segmento id="1" type="EsperaVariable">
+    <connection/>
+  </Segmento>
+  <latitud/>
+  <longitud/>
+  <Elemento>pasoPeatonal</Elemento>
+  <Descripcion>paso</Descripcion>
+  <Aforos Autos="" Tiempo=""/>
+  <Semaforo rojo="" amarillo="" verde=""/>
+</UTYil>

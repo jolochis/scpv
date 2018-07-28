@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+		<script>
+			function validar(){
+				
+				var na=$("#name").val();
+				var pa=$("#pass").val();
+
+				$.post("../peticiones.php","action=simulacionLista&email="+na,
+					function(data){
+						alert("lalala");
+					},"json").
+					fail(function(data){
+						alert("systema fdail"+data.responseText);});
+			}
+		</script>
+	</head>
+	<body>
+		<?php error_reporting(E_ALL ^ E_NOTICE); ?>
+		<fieldset width="20%" height="10%">
+			<legend>Indentificate </legend>	
+			<form id="nombre" name="datos" onSubmit="validar()"  method="post">
+				<table >
+					<tr><td>Nombre de Usuario:</td> 
+						<td><input type="text" id="name" name="nombre" required="required"/></td>
+					</tr>
+					<tr>
+						<td>Password:</td> 
+						<td><input type="password" id="pass" name="pass" required="required"/></td>
+					</tr>
+					<tr>
+						<td><input type="submit"/></td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+	</body>
+</html>

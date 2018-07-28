@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional/EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Sistema de Tráfico Urbano</title>
+	<!--<link rel="stylesheet" href="estilo/style.css" type="text/css" />
+	
+	<link rel="stylesheet" href="lib/jquery-ui/themes/eggplant/jquery-ui.css"/>-->
+	
+	
+	<!--<link rel="stylesheet" href="estilo/google.css" type="text/css" />
+	-->
+	<link rel="stylesheet" href="estilo/ciudadelasim.css" type="text/css" />
+	
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrapv1.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/plugins/bootstrap-selector/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/plugins/bootstrap-slider/css/slider.css"/>
+		
+	<script type="text/javascript" src="lib/class.ObjetoTrafico.js"></script>	
+	<script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="lib/Login.js"></script>
+	<script type="text/javascript" src="lib/propuestas.js"></script>
+	<script type="text/javascript" src="lib/simulaciones.js"></script>
+	<script type="text/javascript" src="lib/class.Benutzer.js"></script>	
+	<script type="text/javascript" src="lib/jQuery.msgBox.js"></script>
+	<script type="text/javascript" src="lib/OpenLayers-2.13.1/OpenLayers.js"></script>
+	<script type="text/javascript" src="lib/class.ConfiguracionObjeto.js"></script>
+	<script type="text/javascript" src="lib/ciudadelaSim.js"></script>
+	<script type="text/javascript" src="lib/ejecuta.js"></script>
+	<script type="text/javascript" src="lib/class.Aforos.js"></script>
+	<script type="text/javascript" src="lib/class.Carriles.js"></script>
+	<script type="text/javascript" src="lib/TrafficObject.js"></script>
+	<script type="text/jscript" src="bootstrap/plugins/bootstrap-confirmation/bootstrap-confirmation.js"></script>
+	<script type="text/javascript" src="bootstrap/plugins/bootstrap-selector/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="bootstrap/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+	<!-- <script type="text/javascript" src="lib/jquery-ui/ui/jquery-ui.js"></script>-->
+	<link href="styles/msgBoxLight.css" rel="stylesheet" type="text/css"/>
+	<!--<script type="text/javascript">
+		function cerrar(){
+			div = document.getElementById('duser');
+			div.style.display='none';
+			}
+	
+	</script>-->
+		
+</head>
+
+
+<body onload="ciudadelaSimInit();" class="container-fluid">
+	
+	<!--Seccion de Modales-->
+	<!--
+		Es el contenedor de objetos viales, con esta interfaz se deben crear los nuevos objetos viales,
+		Modificarce y/o eliminarse
+		-->
+	<div id="cov-dialog" class="modal fade" tabindex="-1" data-keyboard="false" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				  	<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+				  		<span aria-hidden="true">&times;</span>
+				  	</button>
+				  	<h4 class="modal-title" id="selectedWay">Configuración de Objetos Viales</h4>
+				</div>
+			  	<form method="post" role="form" class="form-horizontal">
+				  	<div class="modal-body">
+				  		<div class="row">
+				  			<div class="col-sm-2"></div>
+				  			<div id="miniMap" class="col-sm-8 panel panel-success panel-body" style="height:150px"></div>
+				  			<div class="col-sm-2"></div>
+				  		</div>
+					  	<div class="row">
+					  		<div class="col-sm-2"></div>
+					  		<div class="col-sm-8" align="center">
+					  			<label class="control-label" for="laneSelector">Street Lanes:</label>
+						  		<select class="selectpicker" name='segment' id='laneSelector'>
+						  			<option>S1</option>
+						  		</select>
+					  		</div>
+					  		<div class="col-sm-2"></div>			  		
+					  	</div>
+					  	<div style="padding-top:15px;">
+					  		<ul class="nav nav-pills nav-justified objectSelector" role="tablist">
+					  			<li role="presentation" class="active"><a href="#flowtab" role="tab" data-toggle='tab' data-type='Flow'>Flow</a></li>
+					  			<li role="presentation"><a href='#lighttab' role="tab" data-toggle='tab' data-type='Light'>Traffic Light</a></li>
+					  			<li role="presentation"><a href='#signtab' role="tab" data-toggle='tab' data-type='Sign'>Traffic Sign</a></li>
+					  			<li role="presentation"><a href='#othertab' role="tab" data-toggle='tab' data-type='Other'>Other</a></li>
+					  		</ul>
+					  		
+				  			<div class="tab-content well well-sm">
+					  			<div role="tabpanel" class="tab-pane active" id="flowtab">
+					  				<div style="padding-top:15px;">
+					  					<ul class="nav nav-pills" role="tablist">
+					  						<li role="presentation"><a href="#d" role="tab" data-toggle='tab' data-type='new'> + </a></li>
+					  					</ul>
+					  					<div class="tab-content">						  					
+								  		</div>
+					  				</div>
+					  			</div>
+					  			
+								<div role="tabpanel" class="tab-pane" id="lighttab">									
+					  				<div style="padding-top:15px;">
+					  					<ul class="nav nav-pills" role="tablist">
+					  						<li role="presentation"><a href="#lo2" role="tab" data-toggle='tab' data-type='new'> + </a></li>
+					  					</ul>
+					  					<div class="tab-content">					  						
+					  					</div>
+					  				</div>
+					  			</div>
+					  			
+								<div role="tabpanel" class="tab-pane" id="signtab">
+									<div style="padding-top:15px;">
+					  					<ul class="nav nav-pills" role="tablist">
+					  						<li role="presentation"><a href="#so1" role="tab" data-toggle='tab' data-type='new'> + </a></li>
+					  					</ul>
+					  					<div class="tab-content">
+					  					</div>
+					  				</div>
+					  			</div>
+					  			
+					  			<div role="tabpanel" class="tab-pane" id="othertab">
+					  				<div style="padding-top:15px;">
+					  					<ul class="nav nav-pills" role="tablist">
+					  						<li role="presentation"><a href="#oo1" role="tab" data-toggle='tab' data-type='new'> + </a></li>
+					  					</ul>					  					
+					  				</div>
+				  				</div>
+				  			</div>
+				  			<div class="tab-content">
+		  						<div class='' style="text-align:right;" id="objectsStore">
+		  							<!-- Estos botones eliminarán o almacernaran sólo al objeto selecionado, sus configuraciónes y todo
+		  								lo relacionado con dicho objeto -->
+									<button id="covDelete" type="button" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></span></button>
+									<button id="covSave" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></span></button>
+								</div>
+		  					</div>
+				  		</div>
+				  	</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>			  	
+					</div>
+				</form>	
+			</div>
+		</div>  
+	</div>
+	
+	<!--Propuestas-->
+	<div id="dialog-propuestas" class="modal fade" tabindex="-1" data-keyboard="false" role="dialog">
+		<div class="modal-dialog" role="document"><div class="modal-content">
+			
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+			  		<span aria-hidden="true">&times;</span>
+			  	</button>
+				<h4 class="modal-title" id="selectedWay">Cargar Propuesta</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="input-group">
+					    	<span class="input-group-addon">
+					        	<input type="radio" aria-label="..." name="userradio" class="userradio" value=1>
+					    	</span>
+					    	<span class="form-control">
+					        	<label>Otras...</label>
+					    	</span>
+					    </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="input-group">
+					    	<span class="input-group-addon">
+					        	<input type="radio" aria-label="..." name="userradio" class="userradio" value=0 checked="true">
+					    	</span>
+					      	<span class="form-control">
+					        	<label>Propuestas Propias</label>
+					    	</span>
+					    </div>
+					</div>
+					<div class="col-sm-12">
+						<h3>
+							<div class="form-group">
+								<select class="form-control" id="listaPropuestas"></select>
+							</div>
+						</h3>
+					</div>					
+				</div>				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				<button type="submit" onclick="return false;" class="btn btn-success" data-dismiss="modal">Cargar Propuesta</button>
+			</div>
+		</div></div>
+	</div>
+	
+	<!--Login-->	
+	<div id="dialog-anmeldung" class="modal fade" tabindex="-1" data-keyboard="false" role="dialog">
+		<div class="modal-dialog modal-sm" role="document"><div class="modal-content">
+			<div class="modal-header">
+          		<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+			  		<span aria-hidden="true">&times;</span>
+			  	</button>
+          		<h4 class="modal-title" id="myModalLabel">Logeo de Usuario</h4>
+        	</div>
+        	<form method="post">
+			<div class="modal-body">
+				<table width=100%>
+					<tr><div style="color:red" id="loginerror"> 
+						</div>
+					</tr>
+					<tr>
+						<td><input type="text" class="form-control has-error" pattern="[a-zA-Z]*" placeholder="Nombre Usuario" id="uname" name="uname" maxlength=30 required="required"/></td>
+					</tr>
+					<tr>
+						<td><input type="password" class="form-control" maxlength=10 id="pass" name="pass" placeholder="Password" required="required"/></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				<input type="submit" onclick="return false;" class="btn btn-success" value="Login">
+			</div>
+			</form>
+		</div></div>
+	</div>
+	
+	<!--Registros-->
+	<div id="dialog-register" class="modal fade" tabindex="-1" data-keyboard="false" role="dialog">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+			  		<span aria-hidden="true">&times;</span>
+			  	</button>
+				<h4 class="modal-title" id="selectedWay">Formulario de Registro</h4>
+			</div>
+			<form method="post" role="form" class="form-horizontal">
+				<div class="modal-body">
+					<table width=100%>
+					<tr>
+						<div style="color:red" id="nuevoerror"></div>
+						<div style="color:green" id="nuevobien"></div>
+					</tr>
+					<div class="">
+						<div class="col-sm-4"><label class="control-label">Nombre Completo:</label></div>
+						<div class="col-sm-8"><input type="text" class="form-control" pattern="[a-zA-Z]*" placeholder="Nombre Completo" id="runame" name="runame" maxlength=60 required="required"/></div>						
+												
+						<div class="col-sm-4"><label class="control-label">Nombre de Usuario:</label></div>	
+						<div class="col-sm-8"><input type="text" class="form-control" pattern="[a-zA-Z]*" placeholder="Nombre de Usuario" id="nuname" name="nuname" maxlength=20 required="required"/></div>
+						
+						<div class="col-sm-4"><label class="control-label">Correo:</label></div>
+						<div class="col-sm-8"><input type="text" class="form-control" placeholder="Email" id="nemail" name="nemail" required="required"/></div>
+								
+						<div class="col-sm-4" ><label class="control-label">Password:</label></div>
+						<div class="col-sm-8"><input type="password" class="form-control" maxlength=10 placeholder="Password"  id="npass" name="npass" required="required"/></div>
+						
+					</div>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+					<button tupe="submit" onclick="return false;" class="btn btn-success">Registrar</button>
+				</div>
+			</form>
+		</div>
+		</div>	
+	</div>
+	
+	
+	<!--Modal de Simulaciones-->
+	<div id="dialog-simulacion" class="modal fade" tabindex="-1" data-keyboard="false" role="dialog">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+			  		<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+			  			<span aria-hidden="true">&times;</span>
+			  		</button>
+			  		<h4 class="modal-title" id="">Simulaciones</h4>
+			  	</div>
+			  	<form role="form" class="form-horizontal">
+				  	<div class="modal-body">
+						<div class="input-group">
+							<div class="">
+							<div class="col-sm-6">
+								<div class="input-group">
+							    	<span class="input-group-addon">
+							        	<label for="simconfiginit">Tiempo Inicial:</label>
+							    	</span>						    	
+							        <input type="text" class="form-control" placeholder="Tiempo Inicio" id="simconfiginit"/>						    	
+							    </div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+							    	<span class="input-group-addon">
+							        	<label for="simconfigend">Tiempo final:</label>
+							    	</span>						      	
+							        <input type="text" class="form-control" placeholder="Tiempo Fin" id="simconfigend"/>							    	
+							    </div>
+							</div>
+						</div>				  								
+					  	</div>
+				  	</div>
+				  	<div class="modal-footer">
+					  	<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+					  	<input type="button" onclick="return 0;" class="btn btn-success" value="Solicitar Simulación" data-dismiss="modal">
+				  	</div>
+				  </form>	
+			</div>
+		</div>  
+	</div>
+	<!--Fin de la seccion Modales-->
+	
+<div class="row">
+	<div id="symbolleiste"  class="" width="100%" >
+		
+		<div id="mbox" ></div>
+		<div id="identificado" ></div>
+		<div id="benutzer" align="right">
+			<button id="register" >Registro</button>
+			<button id="anmeldung" >Logeo</button>
+		</div>
+	
+	</div>
+	<div id="cuerpo" class="row">
+		<div id="mapa" class="col-sm-8" ></div>
+			<div id="userprop" class="col-sm-4">
+				<fieldset border=0 id="registrousuario" >
+				<legend><h2>Opciones:</h2></legend>
+				<form id="userform" name="userform" class="userform">
+				<div  id="all" >
+					<input type="button" value="Nueva Propuesta" id="npropuesta" name="npropuesta" class="benutzer"/>
+					<!--<input type="button" value="Simulacion" id="simulacion"/>-->
+					<input type="button" value="Terminar Propuesta" id="endpropuesta" name="endpropuesta" class="benutzer"/>
+					<input type="button" value="Terminar Edicion" id="endedicion" name="endedicion" class="benutzer"/>
+					<input type="button" value="Cargar Propuesta" id="lpropuestas" name="lpropuestas" class="propuesta"/>
+					<input type="button" value="Hacer Simulacion" id="bsimulacion" name="bsimulacion" class="simulacion"/>
+					<input type="button" value="Editar Propuesta" id="mpropuesta" name="mpropuesta" class="benutzer modify"/>
+					<input type="button" value="Eliminar Objeto" id="eobjeto" name="eobjeto" class="benutzer modify"/>
+					<input type="button" value="Modificar Objeto" id="mobjeto" name="mobjeto" class="modify benutzer">
+					<input type="button" value="Solicitar Simulacion" id="sendsimulacion" class="simulacion benutzer">
+					<input type="button" value="Modo Medicion" id="modomedicion" class="simulacion benutzer">
+					<input type="button" value="Regresar" id="regresar" class="benutzer">
+				</div>
+				<div id="simformulario" class="simulacion" >
+					<fieldset class="ui-widget ui-helper-clearfix ui-widget-content ui-corner-all">
+					<div >
+						<fieldset class="ui-corner-all">
+							<legend>Periodo:</legend>
+							<table >
+							<tr>
+								<td>Inicio:</td>
+								<td><input type="text" value=0 id="siminit"></td>
+							</tr>
+							<tr>
+								<td>Fin:</td>
+								<td><input type="text" value=10 id="simend"></td>
+							</tr>
+							</table>
+						</fieldset>
+						<fieldset class="ui-corner-all">
+						<legend>Informacion:</legend>
+						<table >
+							<tr>
+								<td>Nombre:</td>
+								<td><input type="text" id="namesegment" disabled></td>
+							</tr>
+							<tr>
+								<td>Densidad:</td>
+								<td><input type="text" id="densidad" disabled></td>
+							</tr>
+							<tr>
+								<td>Flujo:</td>
+								<td><input type="text" id="flujo" disabled></td>
+							</tr>
+							<tr>
+								<td><input type="button" value="Actualizar" id="actualizarsim" name="actualizarsim"></td>
+							</tr>
+						</table>
+						</fieldset>
+					</div>
+					</fieldset>
+				</div>
+				</fieldset>
+				<div id="optiontraffic" class="objeto benutzer">
+					<fieldset border = 0>
+					<input type="button" value="Cancelar" name="cseleccion" id="cseleccion" class="benutzer">
+					<legend>Objetos:</legend>
+					<select class="cmbopt" id="opcionPropuesta">
+						<option id="" name="" value="">Elige una opcion:</option>
+						<option id="semaphore" name="semaphore" value="semaforo">Semáforo.</option>
+						<option id="bump" name="bump" value="tope">Tope.</option>
+						<option id="flow" name="flow" value="aforo">Aforo.</option>
+						<!--<option id="auto" name="auto" value="pauto">Parada de Autobus.</option>
+						<option value="desnivel">Desnivel.</option>
+						<option value="generico">Genérico.</option>-->
+					</select>
+					</fieldset>
+				<div>
+				<div id="semop" class="benutzer semaforo configuration">
+					<fieldset>
+					<legend>Semaforos:</legend>
+						<div id="carriles" name="carriles" >
+							<p>Seleccione los carriles que afectará:</p>
+							<ul id="carril" name="carril" class="ocarril"></ul>
+						</div>
+					<p id="ubicsem"></p>
+					<div id="confsem" class="confsem semaforo configuration">
+						<fieldset>
+						<legend>Configuración del semaforo</legend>
+						<!--<p>Luz Roja. Duracion:</p>-->
+						<input class="data red semaforo" maxlength=4 type="text" id="lrd" placeholder="Tiempo Luz Roja" name="lrd" class="edit"/>
+						<!--<p>Luz Amarilla. Duracion:</p>-->
+						<input class="data yellow semaforo" maxlength=4 type="text" id="lad" placeholder="Tiempo Luz Amarilla" name="lad" class="edit"/>
+						<!--<p>Luz Verde. Duracion:</p>-->
+						<input class="data green semaforo"  maxlength=4  type="text" id="lvd" placeholder="Tiempo Luz Verde" name="lvd" class="edit"/>
+						<!--  <p>Luz Flecha Izquierda. Duracion: <input size="8" type="text" id="lfid" name="lvd" value="" /></p>
+						<p>Luz Flecha Derecha. Duracion: <input size="8" type="text" id="lfdd" name="lvd" value="" /></p> -->
+						<p>Luz inicial: <select id="luzini" class="edit attr semaforo"><option value="red">rojo</option><option value="yellow">amarillo</option><option value="green">verde</option><!-- <option value="flecha_derecha">Flecha Izquierda</option><option value="rojo">Flecha Izquierda</option> --></select></p>
+						<p>Hora de configuracion:</p>
+						<p>De <input class="data init semaforo" maxlength=4 type="text" id="tinsem" name="tinsem" />
+						a <input class="data end semaforo" maxlength=4 type="text" id="tfinsem" name="tfinsem" /></p>
+						<!--<p><input type="button" value="probando" id="elc" /></p>-->
+						<input type="button" value="Guardar Semaforo" id="gs" class="save"/>
+					</div>
+					</fieldset>
+				</div>
+				<div id="topeop" class="benutzer tope configuration">
+				<fieldset>
+				<legend>Topes:</legend>
+					<div id="carrilest" name="carrilest" >
+						<p>Seleccione el/los carriles que afectara el tope.</p>
+						<ul id="carrilt" name="carrilt" class="ocarril"></ul>
+					</div>
+					<input type="button" value="Guardar tope" id="gt" name="gt"  class="save"/>
+				</fieldset>					
+				</div>
+				<div id="pautop" class="benutzer">
+						<p>Seleccione la posición a colocar la parada de autobus.<p>
+						<div id="carrilespa" name="carrilespa" >
+							<p>Seleccione el carriles que afectara el la parada de autobus.</p>
+							<ul id="carrilpa" name="carrilpa" class="ocarril"></ul>
+						</div>
+						<input type="button" value="Guardar Parada de Autobus" id="gpa" name="gpa"  class="save"/></p>
+				</div>
+				<div id="dniop" class="benutzer">
+						<p>Opciones de Desnivel.</p>
+						<p>Configuración de desnivel.</p>
+						<p>Numero de carriles: <input type="text" class="texto1" name="ncdes" id="ncdes" /></p>
+						<p>*Si es de doble sentido, se asignaran el mismo </br>numero de carriles para cada sentido.</p>
+						<p>Sentido:</p>
+						<select class="cmb1" id="sendes"><option value="traz">Al Trazado</option><option value="contraz">Contrario al trazado</option><option value="doble">Doble sentido.</option></select>
+						<p>Tipo:</p>
+						<select class="cmb1" id="tipdes"><option value="">Elige el tipo de desnivel.</option><option value="subterraneo">Subterraneo</option><option value="puente">Puente</option></select>
+						<p><input type="button" value="Guardar Desnivel" id="gdn" name="gdn"  class="save"/></p>
+				</div>
+				<div id="afrop" class="benutzer aforo configuration">
+					<fieldset>
+					<legend>Aforos:</legend>
+					<div class="aforoconf">
+					<p>Cantidad de vehiculos de salida:</p> 
+					<input maxlength=4 class="data attr aforo" type="text" id="vehsalaf" name="vehsalaf"/><select id="cvt"><option value="v/hr">V/Hr</option><option value="v/min">V/Min</option></select>
+					<p>Horario de configuración:</p>
+					<p>De <input maxlength=4 class="data init aforo" type="text" name="tinaf" id="tinaf" /> 
+					a <input maxlength=4 class="data end aforo" type="text" name="tfiaf" id="tfiaf" /></p>
+					<p>Seleccione los carriles que afectará:</p>
+					<div id="carrilesa" >
+						<ul id="carrila" class="ocarril"></ul>
+					</div>
+					</div>
+					<!--<div>
+						<input type="button" name="trazsal" id="trazsal" value="Trazar salida" />
+					</div>-->
+						<!-- <p>Linea 1: Porcentaje del flujo total: <input size="8" type="text" name="fseg_0" id="fseg_0" /></p> -->
+					<input type="button" value="Guardar aforo" id="gaf"  class="save"/>
+				</fieldset>
+				</div>
+				<div id="confgen" class="benutzer">
+					<p>Datos del objeto.</p>
+					<p>Tipo: <input type="text" class="texto1" id="tiob" name="tiob" /></p>
+					<p>Forma: <select id="formgen"><option value="punto">Punto</option><option value="linea">Linea</option></select></p>
+					<!-- <div>
+					<p>Configuracion del objeto.</p>
+					<p>Estado: <input type="text" name="estobj" id="estobj" /></p>
+					<p>Hora inicio: <input type="text" name="hrin" id="hrin" /></p>
+					<p>Hora final: <input type="text" name="hrfin" id="hrfin" /></p>
+					<p>Es Configuracion Padre?: <input type="checkbox" value="1" id="esInicial" name="esInicial" /></p> 
+					</div> -->
+					<input type="button" id="otraconf" name="otraconf" value="Otra configuracion." />
+					<p><input type="button" value="Guardar objeto generico" id="gog" /></p>
+				</div>
+				</form>
+		</div>
+		
+	
+	</div>
+		
+</div>
+	<!--
+		Crea el manejador de dialogos y objetos viales
+		inicializa los listner de los dialogos
+		 -->
+	<script type="text/javascript" src="lib/ObjectConfigutarionManager.js"></script>
+	<script>
+		prepareSlider();
+		cov = new ObjectConfigurationManager();
+		cov.initListeners();
+		//$("input[type='button']" ).button();
+		//$("input[type='text']" ).button();
+		
+		//$("button").button();
+		//$("#symbolleiste").buttonset();
+		/*$('#traffic').buttonset();
+		$('#all').buttonset();*/
+		
+	</script>
+
+</body>
+</html>
