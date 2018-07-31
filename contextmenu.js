@@ -104,6 +104,8 @@ function center(obj) {
     center: obj.coordinate
   });
 }
+// Funciones pin
+// PIN = Colocar elementos el mapa
 var contadorArray = 0;
 function pinSemaforo(obj) {
 
@@ -141,7 +143,6 @@ function pinSemaforo(obj) {
   document.getElementById('lon').value = lon;
   document.getElementById("lat").innerHTML = lat;
   document.getElementById("lon").innerHTML = lon;
-  pushea(type);
 
 }//pinSemaforo
 
@@ -171,39 +172,19 @@ function pasoP(obj) {
 
   feature.setStyle(iconStyle);
   vectorLayer.getSource().addFeature(feature);
+  document.getElementById('tipo').value = type;
+  document.getElementById('tipo').innerHTML = type;
+  var lat = coord4326[1];
+  var lon = coord4326[0];
+  document.getElementById('lat').value = lat;
+  document.getElementById('lon').value = lon;
+  document.getElementById("lat").innerHTML = lat;
+  document.getElementById("lon").innerHTML = lon;
 
-  pushea(type);
+
 }//paso peatonal
 
-var types = [];
-var contadorSemaforo = 0;
-function pushea(type) {
-  contadorArray++;
-  //console.log(type);
 
-  types.push(type);
-  console.log(types);
-
-
-  var arra = JSON.stringify(types);
-  document.getElementById('tipo').value = arra;
-
-  console.log(arra);
-  //console.log(contadorArray);
-  /*
-    if (type == 'semaforo') {
-  
-      contadorSemaforo++;
-      console.log(contadorSemaforo);
-      var di = document.querySelector('.semaforo');
-      for (let index = 0; index < contadorSemaforo; index++) {
-        console.log('contador semaforo');
-        var inp = document.createElement('input');
-        inp.setAttribute('value', [index]);
-        di.appendChild(inp);
-      }
-    }*/
-}//pushea
 function pinAforo(obj) {
 
   var coord4326 = ol.proj.transform(obj.coordinate, 'EPSG:3857', 'EPSG:4326'),
@@ -242,7 +223,7 @@ function pinAforo(obj) {
   document.getElementById('lon').value = lon;
   document.getElementById("lat").innerHTML = lat;
   document.getElementById("lon").innerHTML = lon;
-  pushea(type);
+
 }//pinAforo
 function aforos() {
   var di = document.querySelector('.semaforo');
@@ -297,8 +278,9 @@ function pinTope(obj) {
   document.getElementById("lat").innerHTML = lat;
   document.getElementById("lon").innerHTML = lon;
 
-  pushea(type);
+
 }//pinTope
+
 
 function tiempoSemaforo() {
   var di = document.querySelector('.semaforo');
@@ -341,6 +323,8 @@ function tiempoSemaforo() {
 function removeMarker(obj) {
   vectorLayer.getSource().removeFeature(obj.data.marker);
 }
+// Funciones para los PINS 
+
 
 function marker(obj) {
   var coord4326 = ol.proj.transform(obj.coordinate, 'EPSG:3857', 'EPSG:4326'),
@@ -375,6 +359,8 @@ function marker(obj) {
   document.getElementById("lat").innerHTML = lat;
   document.getElementById("lon").innerHTML = lon;
 
+
+
 }//marcador
 
 (function () {
@@ -386,91 +372,100 @@ function marker(obj) {
     opcion = document.getElementsByTagName('option');
     //opcion = addEventListener('change', valores);
 
-
-
-    // Empieza funcion para enviar datos
     /*
-     var enviar = document.getElementsByName('submit');
-     var formulario = document.getElementById('formulario');
-     var descripcion = document.getElementById('inpDescripcion');
-     var action = formulario.getAttribute('action');
- 
- 
-     var form_datos = new FormData(formulario);
-     for ([key, value] of form_datos.entries()) {
-       console.log(key + ": " + value);
-     }
-  
-     function valores() {
-       var static = document.getElementById('estatico').value;
- 
-         var di = document.querySelector('.semaforo');
-         var rojo = document.createElement('div');
-         var inpRojo = document.createElement('input');
-         var inpAmarillo = document.createElement('input');
-         var inpVerde = document.createElement('input');
-         inpRojo.setAttribute('placeholder', 'rojo');
-         inpRojo.setAttribute('class', 'inp');
-         inpRojo.setAttribute('name', 'rojo');
-         inpRojo.setAttribute('required', 'true');
- 
- 
-         inpAmarillo.setAttribute('placeholder', 'amarillo');
-         inpAmarillo.setAttribute('class', 'inp');
-         inpAmarillo.setAttribute('name', 'amarillo');
- 
-         inpVerde.setAttribute('placeholder', 'verde');
-         inpVerde.setAttribute('class', 'inp');
-         inpVerde.setAttribute('name', 'verde');
-         rojo.setAttribute('id', 'rojo');
-         rojo.setAttribute('class', 'r');
- 
-         di.appendChild(rojo);
-         rojo.appendChild(inpRojo);
- 
- 
- 
-         var amarillo = document.createElement('div');
-         amarillo.setAttribute('id', 'amarillo');
-         amarillo.setAttribute('class', 'r');
-         di.appendChild(amarillo);
-         amarillo.appendChild(inpAmarillo);
- 
-         var verde = document.createElement('div');
-         verde.setAttribute('id', 'verde');
-         verde.setAttribute('class', 'r');
-         di.appendChild(verde);
-         verde.appendChild(inpVerde);
-
-         var list = document.getElementsByClassName("r");
-         for (var i = list.length - 1; 0 <= i; i--)
-           if (list[i] && list[i].parentElement)
-             list[i].parentElement.removeChild(list[i]);
- 
-
-         var di = document.querySelector('.semaforo');
-         var autos = document.createElement('input');
-         var tiempo = document.createElement('input');
- 
-         autos.setAttribute('placeholder', 'Numero de autos');
-         autos.setAttribute('class', 'aforo');
-         autos.setAttribute('name', 'autos');
- 
-         tiempo.setAttribute('placeholder', 'Tiempo');
-         tiempo.setAttribute('class', 'aforo');
-         tiempo.setAttribute('name', 'tiempo');
- 
-         di.appendChild(autos);
-         di.appendChild(tiempo);
+       var types = [];
+   
+   
+       function pushea(type) {
+         types.push(type);
+         var arra = JSON.stringify(types);
+         document.getElementById('tipo').value = arra;
+         console.log(arra)
+       }//pushea
+       // Empieza funcion para enviar datos
       
- 
-         var list = document.getElementsByClassName("aforo");
-         for (var i = list.length - 1; 0 <= i; i--)
-           if (list[i] && list[i].parentElement)
-             list[i].parentElement.removeChild(list[i]);
-        
-     } //valores
- */
+       
+        var enviar = document.getElementsByName('submit');
+        var formulario = document.getElementById('formulario');
+        var descripcion = document.getElementById('inpDescripcion');
+        var action = formulario.getAttribute('action');
+    
+    
+        var form_datos = new FormData(formulario);
+        for ([key, value] of form_datos.entries()) {
+          console.log(key + ": " + value);
+        }
+     
+        function valores() {
+          var static = document.getElementById('estatico').value;
+    
+            var di = document.querySelector('.semaforo');
+            var rojo = document.createElement('div');
+            var inpRojo = document.createElement('input');
+            var inpAmarillo = document.createElement('input');
+            var inpVerde = document.createElement('input');
+            inpRojo.setAttribute('placeholder', 'rojo');
+            inpRojo.setAttribute('class', 'inp');
+            inpRojo.setAttribute('name', 'rojo');
+            inpRojo.setAttribute('required', 'true');
+    
+    
+            inpAmarillo.setAttribute('placeholder', 'amarillo');
+            inpAmarillo.setAttribute('class', 'inp');
+            inpAmarillo.setAttribute('name', 'amarillo');
+    
+            inpVerde.setAttribute('placeholder', 'verde');
+            inpVerde.setAttribute('class', 'inp');
+            inpVerde.setAttribute('name', 'verde');
+            rojo.setAttribute('id', 'rojo');
+            rojo.setAttribute('class', 'r');
+    
+            di.appendChild(rojo);
+            rojo.appendChild(inpRojo);
+    
+    
+    
+            var amarillo = document.createElement('div');
+            amarillo.setAttribute('id', 'amarillo');
+            amarillo.setAttribute('class', 'r');
+            di.appendChild(amarillo);
+            amarillo.appendChild(inpAmarillo);
+    
+            var verde = document.createElement('div');
+            verde.setAttribute('id', 'verde');
+            verde.setAttribute('class', 'r');
+            di.appendChild(verde);
+            verde.appendChild(inpVerde);
+   
+            var list = document.getElementsByClassName("r");
+            for (var i = list.length - 1; 0 <= i; i--)
+              if (list[i] && list[i].parentElement)
+                list[i].parentElement.removeChild(list[i]);
+    
+   
+            var di = document.querySelector('.semaforo');
+            var autos = document.createElement('input');
+            var tiempo = document.createElement('input');
+    
+            autos.setAttribute('placeholder', 'Numero de autos');
+            autos.setAttribute('class', 'aforo');
+            autos.setAttribute('name', 'autos');
+    
+            tiempo.setAttribute('placeholder', 'Tiempo');
+            tiempo.setAttribute('class', 'aforo');
+            tiempo.setAttribute('name', 'tiempo');
+    
+            di.appendChild(autos);
+            di.appendChild(tiempo);
+         
+    
+            var list = document.getElementsByClassName("aforo");
+            for (var i = list.length - 1; 0 <= i; i--)
+              if (list[i] && list[i].parentElement)
+                list[i].parentElement.removeChild(list[i]);
+           
+        } //valores
+    */
 
   });
 
