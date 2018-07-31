@@ -1,7 +1,6 @@
 <?php
 include_once("includes/condb.php");
 error_reporting(E_ALL);
-echo "entra php";
 
 $verde = $_POST['verde'];
 $rojo = $_POST['rojo'];
@@ -13,7 +12,7 @@ $elemento = $_POST['tipo'];
 $aforoA = $_POST['autos'];
 $aforoT = $_POST['tiempo'];
 
-echo "submit";
+
   switch ($elemento) {
 
     case 'paso':
