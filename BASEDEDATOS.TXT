@@ -54,3 +54,18 @@ semaforos
 coordenadas       
 coordenadas_dinamicos
         
+script para la base de datos
+        create table e(
+	id_elemento serial primary key,
+	tipo varchar,
+	rojo smallint,
+	verde smallint,
+	amarillo smallint,
+	lat double precision,
+	lon double precision,
+	aforo_auto int,
+	aforo_tiempo int,
+	descripcion varchar,
+	id_mapa int
+);
+el id mapa puede ser llave foranea
